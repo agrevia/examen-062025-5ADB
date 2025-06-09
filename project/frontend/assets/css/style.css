@@ -1,0 +1,85 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #f5f2e9 url('../img/olive-pattern.png') repeat;
+  color: #2d572c;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #3b4e2d;
+  margin-bottom: 2rem;
+}
+
+form {
+  background: #fffef9;
+  border: 2px solid #c7d6b3;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  width: 100%;
+  border: 1px solid #c7d6b3;
+  border-radius: 4px;
+}
+
+button {
+  background: #2d572c;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.boom {
+  background: #fff;
+  border: 1px solid #d4d4d4;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 6px solid #648b3f;
+  border-radius: 6px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #2d572c;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: #e4eedf;
+  transition: background 0.2s;
+}
+
+nav a:hover {
+  background: #cde0c3;
+}
+
+nav a.active {
+  background: #648b3f;
+  color: white;
+}
+
+header {
+  background: url("../img/header.png") no-repeat center center fixed;
+  height: 100px;
+}

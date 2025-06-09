@@ -1,0 +1,211 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Olijfbomen API",
+    "version": "1.0.0",
+    "description": "API voor het beheren van olijfbomen van Juan Garc\u00eda Jim\u00e9nez"
+  },
+  "paths": {
+    "/bomen": {
+      "get": {
+        "summary": "Haal alle bomen op",
+        "responses": {
+          "200": {
+            "description": "Lijst van alle olijfbomen",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "soort": {
+                        "type": "string"
+                      },
+                      "leeftijd": {
+                        "type": "integer"
+                      },
+                      "aantal_in_stock": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Serverfout"
+          }
+        }
+      },
+      "post": {
+        "summary": "Voeg een nieuwe boom toe",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "soort": {
+                    "type": "string"
+                  },
+                  "leeftijd": {
+                    "type": "integer"
+                  },
+                  "aantal_in_stock": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "soort",
+                  "leeftijd",
+                  "aantal_in_stock"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Boom succesvol toegevoegd"
+          },
+          "400": {
+            "description": "Verplichte velden ontbreken"
+          },
+          "500": {
+            "description": "Serverfout"
+          }
+        }
+      }
+    },
+    "/bomen/{id}": {
+      "put": {
+        "summary": "Werk een bestaande boom bij",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "soort": {
+                    "type": "string"
+                  },
+                  "leeftijd": {
+                    "type": "integer"
+                  },
+                  "aantal_in_stock": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "soort",
+                  "leeftijd",
+                  "aantal_in_stock"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Boom succesvol ge\u00fcpdatet"
+          },
+          "400": {
+            "description": "Verplichte velden ontbreken"
+          },
+          "404": {
+            "description": "Boom niet gevonden"
+          },
+          "500": {
+            "description": "Serverfout"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Verwijder een boom",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Boom succesvol verwijderd"
+          },
+          "404": {
+            "description": "Boom niet gevonden"
+          },
+          "500": {
+            "description": "Serverfout"
+          }
+        }
+      },
+      "get": {
+        "summary": "Haal \u00e9\u00e9n boom op via ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gevonden boom",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "soort": {
+                      "type": "string"
+                    },
+                    "leeftijd": {
+                      "type": "integer"
+                    },
+                    "aantal_in_stock": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Boom niet gevonden"
+          },
+          "500": {
+            "description": "Serverfout"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Administratie - Juan's Olijfbomen</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="administratie.html" class="active">Administratie</a></li>
+    </ul>
+</nav>
+
+<h1>Administratiepaneel</h1>
+
+<form id="boomForm">
+    <input type="hidden" id="id">
+    <input type="text" id="soort" placeholder="Soort" required>
+    <input type="number" id="leeftijd" placeholder="Leeftijd in jaren" required>
+    <input type="number" id="stock" placeholder="Aantal in stock" required>
+    <button type="submit">Opslaan</button>
+</form>
+
+<section id="bomen"></section>
+
+<script src="assets/js/script.js"></script>
+</body>
+</html>
