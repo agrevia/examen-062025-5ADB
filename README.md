@@ -1,13 +1,51 @@
-# Examen Node.js – API voor olijfbomenkwekerij
+<img src="https://www.de-passer.be/themes/depasser/img/logo-passer.svg" alt="img" style="width:25%;" />
+
+```
+Naam:
+Familienaam:
+
+Klas: 5ADB
+Leerkracht: Dhr. R. Hennebel
+Vak: Webdevelopment
+```
+
+# Examen Javascript & Node.js – webapplicatie voor olijfbomenkwekerij
 
 ## Situatie
 
 Juan García Jiménez runt een olijfbomenkwekerij in Spanje. Hij wil een webapplicatie waarmee hij het overzicht van zijn bomen digitaal kan beheren.
 
-Je krijgt een gedeeltelijk afgewerkt project waarin Swagger al correct geconfigureerd is. Via Swagger kun je je API testen. De frontend, styling en layout zijn volledig klaar.
+Je krijgt een **gedeeltelijk afgewerkt project** waarin:
+
+- Swagger al correct geconfigureerd is
+- de nodige **Node.js-modules reeds geïnstalleerd** zijn
+- het project al volledig **geïnitialiseerd** is
+- de frontend, styling en layout **volledig klaar** staan
+
+Via **Swagger** kun je de API testen en controleren of de routes juist werken.
 
 In je **GitHub-repository** vind je ook een **screencast (video)** waarin je duidelijk kan zien hoe de applicatie er op het einde moet uitzien.  
-Gebruik deze als visuele referentie voor structuur, werking en functionaliteit.
+Gebruik deze als visuele referentie voor:
+
+- de werking van de frontend
+- de gebruikerservaring
+- de verwachte dataflow tussen frontend en backend
+
+> [!TIP]
+>
+> Bekijk en **analyseer de screencast aandachtig**. Bestudeer ook grondig de bestaande HTML- en CSS-code.  
+> Je hoeft niets aan de opmaak of frontend te wijzigen, maar je moet goed begrijpen hoe de structuur in elkaar zit.
+
+---
+
+### Pagina's van de webapplicatie
+
+- **Homepagina**  
+  Toont een overzicht van alle bomen die Juan verkoopt. Deze gegevens worden automatisch geladen uit de databank.
+
+- **Administratiepagina**  
+  Geeft Juan toegang tot zijn assortiment: hij kan bomen toevoegen, aanpassen, verwijderen of bekijken.  
+  Dit gebeurt via een formulier en dynamische knoppen naast elk item.
 
 ---
 
@@ -22,7 +60,7 @@ Je clonet de GitHub-repository en opent het bestaande project in WebStorm.
 De databank is reeds zichtbaar via jouw DataGrip-account.  
 **Je moet zelf de SQL uit het bestand importeren** om de tabel `olijfbomen` aan te vullen.
 
-Indienen gebeurt door te **pushen naar jouw GitHub repository**. Zorg dat je repository gedeeld is met de leerkracht of publiek staat.
+Indienen gebeurt door te **pushen naar de GitHub repository**. 
 
 ---
 
@@ -51,6 +89,10 @@ Vul volgende zaken aan:
 
 Zorg dat je connectie correct geëxporteerd wordt zodat die bruikbaar is in `app.js`.
 
+> [!TIP]
+>
+> Commit je aanpassingen naar je GitHub repository.
+
 ---
 
 ## 2. app.js (18 punten)
@@ -64,6 +106,10 @@ Gebruik Express en Knex. Zorg voor correcte HTTP-statuscodes (`400`, `404`, `500
 - Voeg de boom toe met `insert`.
 - Geef bij succes status 201 en een bevestigingsboodschap terug met het nieuw toegevoegde ID.
 
+> [!TIP]
+>
+> Commit je aanpassingen naar je GitHub repository.
+
 ### PUT `/bomen/:id` – 6 punten
 
 - Leest het ID uit `req.params.id`.
@@ -72,6 +118,10 @@ Gebruik Express en Knex. Zorg voor correcte HTTP-statuscodes (`400`, `404`, `500
 - Als de boom niet bestaat (update count = 0): geef status 404.
 - Geef bij succes status 200 en het aangepaste record terug.
 
+> [!TIP]
+>
+> Commit je aanpassingen naar je GitHub repository.
+
 ### DELETE `/bomen/:id` – 6 punten
 
 - Leest het ID uit `req.params.id`.
@@ -79,19 +129,26 @@ Gebruik Express en Knex. Zorg voor correcte HTTP-statuscodes (`400`, `404`, `500
 - Bij geen resultaat: status 404.
 - Bij succes: status 200 en korte boodschap.
 
----
+> [!TIP]
+>
+> Commit je aanpassingen naar je GitHub repository.
+
+<hr style="page-break-after: always;">
+
 
 ## 3. script.js (18 punten)
 
-In `frontend/assets/js/script.js` schrijf je **zes functies** die samen het gedrag van de gebruikersinterface regelen.  
-De structuur is je al bekend uit de lessen. Zorg voor:
+In `frontend/assets/js/script.js` schrijf je **vier functies** die het gedrag van de gebruikersinterface regelen.  
+Zorg voor:
 
-- `DOMContentLoaded` → roept `init()` aan
-- `init()` → koppelt formulier + laadt boomgegevens
 - `async/await` + `try/catch`
 - correcte `fetch()`-calls naar `http://localhost:3333/bomen`
 
-### ✅ `renderBomen(bomen)` – 3 punten
+> [!TIP]
+>
+> Commit je aanpassingen naar je GitHub repository.
+
+### `renderBomen(bomen)` – 3 punten
 
 - Leegt eerst de `#bomen` container
 - Voor elke boom maak je een `div.boom` aan
@@ -100,36 +157,61 @@ De structuur is je al bekend uit de lessen. Zorg voor:
   - “Wijzig” → roept `editBoom(boom)` aan
   - “Verwijder” → roept `deleteBoom(id)` aan
 
-### ✅ `handleFormSubmit(e)` – 5 punten
+> [!TIP]
+>
+> Commit je aanpassingen naar je GitHub repository.
+
+### `handleFormSubmit(e)` – 5 punten
 
 - Voorkomt standaard gedrag van formulier
 - Leest alle velden uit het formulier: `#id`, `#soort`, `#leeftijd`, `#stock`
-- Zet deze om naar een object:
-  `{ soort, leeftijd, aantal_in_stock }`
+- Zet deze om naar een object: `{ soort, leeftijd, aantal_in_stock }`
 - Verzendt `POST` of `PUT` naar:
   - `"http://localhost:3333/bomen"` (voor toevoegen)
   - `"http://localhost:3333/bomen/:id"` (voor aanpassen)
 - Verstuur JSON met correcte headers
 - Roept `resetForm()` en `fetchBomen()` opnieuw aan
-- Bij fout: toon consolefout
 
-### ✅ `editBoom(boom)` – 5 punten
+> [!TIP]
+>
+> Commit je aanpassingen naar je GitHub repository.
+
+<hr style="page-break-after: always;">
+
+
+### `editBoom(boom)` – 5 punten
 
 - Vul het formulier in met de waarden van de geselecteerde boom
 - Scroll naar het formulier via:
   `document.getElementById('boomForm').scrollIntoView({ behavior: 'smooth' });`
 
-### ✅ `deleteBoom(id)` – 5 punten
+> [!TIP]
+>
+> Commit je aanpassingen naar je GitHub repository.
+
+###  `deleteBoom(id)` – 5 punten
 
 - Verstuur `DELETE` naar `http://localhost:3333/bomen/:id`
 - Roep daarna `fetchBomen()` opnieuw aan
-- Bij fout: log naar de console
+
+> [!TIP]
+>
+> Commit je aanpassingen naar je GitHub repository.
 
 ---
 
+> [!TIP]
+>
+> Controleer je volledige applicatie & push je commits naar je GitHub repository.
+
+<hr style="page-break-after: always;">
+
+
 ## Totaal: /45 punten
 
-## Evaluatietabel (in te vullen door de leerkracht)
+---
+
+## Evaluatietabel 
 
 | Onderdeel        | Subonderdeel                                          | Max. punten | Behaalde punten |
 | ---------------- | ----------------------------------------------------- | ----------- | --------------- |
@@ -137,19 +219,15 @@ De structuur is je al bekend uit de lessen. Zorg voor:
 |                  | Correcte databankgegevens (gebruiker, wachtwoord, DB) | 2           |                 |
 |                  | Export connectie                                      | 1           |                 |
 |                  | **Totaal db.js**                                      | **4**       |                 |
-| **2. app.js**    | GET /bomen                                            | 4           |                 |
-|                  | POST /bomen                                           | 6           |                 |
+| **2. app.js**    | POST /bomen                                           | 6           |                 |
 |                  | PUT /bomen/:id                                        | 6           |                 |
-|                  | DELETE /bomen/:id                                     | 4           |                 |
-|                  | **Totaal app.js**                                     | **20**      |                 |
-| **3. script.js** | init()                                                | 1           |                 |
-|                  | fetchBomen()                                          | 3           |                 |
-|                  | renderBomen()                                         | 3           |                 |
+|                  | DELETE /bomen/:id                                     | 6           |                 |
+|                  | **Totaal app.js**                                     | **18**      |                 |
+| **3. script.js** | renderBomen()                                         | 3           |                 |
 |                  | handleFormSubmit()                                    | 5           |                 |
-|                  | editBoom()                                            | 2           |                 |
-|                  | deleteBoom()                                          | 2           |                 |
-|                  | resetForm()                                           | 0.5         |                 |
-|                  | **Totaal script.js**                                  | **16**      |                 |
+|                  | editBoom()                                            | 5           |                 |
+|                  | deleteBoom()                                          | 5           |                 |
+|                  | **Totaal script.js**                                  | **18**      |                 |
 | **4. GitHub**    | Repository correct gecloned                           | 1           |                 |
 |                  | Minstens 6 commits (0.5 per commit, max. 3)           | 3           |                 |
 |                  | Correct push naar GitHub                              | 1           |                 |
